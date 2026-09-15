@@ -1,0 +1,10 @@
+dash==3.2.0
+plotly==6.3.0
+pandas==2.2.3
+numpy==1.26.4
+scikit-learn==1.6.1
+wordcloud==1.9.4
+nltk==3.9.1
+shap==0.46.0
+lime==0.2.0.1
+gunicorn==23.0.0
