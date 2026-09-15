@@ -64,8 +64,10 @@ transaction_df = pd.read_csv(find_file("Transaction data.csv"), dtype={"ChannelP
 for df in [response_df, details_df, transaction_df]:
     for c in df.columns:
         if c != "ChannelPartnerID":
-            df[c] = pd.to_numeric(df[c], errors="ignore")
-
+            converted = pd.to_numeric(df[c], errors="coerce")
+            if converted.notna().sum() > 0:
+                df[c] = converted
+                
 transaction_df["Year"] = pd.to_numeric(transaction_df["Year"], errors="coerce").astype("Int64")
 transaction_df["Month"] = pd.to_numeric(transaction_df["Month"], errors="coerce").astype("Int64")
 transaction_df["Sales"] = pd.to_numeric(transaction_df["Sales"], errors="coerce").fillna(0)
